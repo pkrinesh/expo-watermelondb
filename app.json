@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "expo-water-demo",
+    "slug": "expo-water-demo",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
