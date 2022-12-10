@@ -1,4 +1,4 @@
-package com.expowaterdemo.newarchitecture.modules;
+package com.krinesh.expowaterdemo.newarchitecture.modules;
 
 import com.facebook.jni.HybridData;
 import com.facebook.react.ReactPackage;

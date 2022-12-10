@@ -1,4 +1,4 @@
-package com.expowaterdemo.newarchitecture.components;
+package com.krinesh.expowaterdemo.newarchitecture.components;
 
 import com.facebook.jni.HybridData;
 import com.facebook.proguard.annotations.DoNotStrip;

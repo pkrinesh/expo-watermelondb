@@ -3,8 +3,14 @@
     "name": "expo-water-demo",
     "slug": "expo-water-demo",
     "version": "1.0.0",
-    "assetBundlePatterns": [
-      "**/*"
-    ]
+    "assetBundlePatterns": ["**/*"],
+    "extra": {
+      "eas": {
+        "projectId": "a4d924e1-8608-4feb-aec8-b9fff1ea53d8"
+      }
+    },
+    "android": {
+      "package": "com.krinesh.expowaterdemo"
+    }
   }
 }

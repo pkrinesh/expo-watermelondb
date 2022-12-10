@@ -1,21 +1,31 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import 'react-native-gesture-handler';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Root from './src/components/Root';
+import Blog from './src/components/Blog';
+import Post from './src/components/Post';
+import ModerationQueue from './src/components/ModerationQueue';
 
-export default function App() {
+const Stack = createNativeStackNavigator();
+
+const App = () => {
+  const [timeToLaunch] = React.useState(new Date().getTime() - 0);
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="Root"
+          component={Root}
+          initialParams={{ timeToLaunch }}
+        />
+        <Stack.Screen name="Blog" component={Blog} />
+        <Stack.Screen name="Post" component={Post} />
+        <Stack.Screen name="ModerationQueue" component={ModerationQueue} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;

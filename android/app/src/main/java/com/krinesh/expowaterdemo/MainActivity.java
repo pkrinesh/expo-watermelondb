@@ -1,4 +1,4 @@
-package com.expowaterdemo;
+package com.krinesh.expowaterdemo;
 
 import android.os.Build;
 import android.os.Bundle;

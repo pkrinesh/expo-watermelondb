@@ -1,4 +1,4 @@
-package com.expowaterdemo.newarchitecture;
+package com.krinesh.expowaterdemo.newarchitecture;
 
 import android.app.Application;
 import androidx.annotation.NonNull;
@@ -20,9 +20,9 @@ import com.facebook.react.fabric.EmptyReactNativeConfig;
 import com.facebook.react.fabric.FabricJSIModuleProvider;
 import com.facebook.react.fabric.ReactNativeConfig;
 import com.facebook.react.uimanager.ViewManagerRegistry;
-import com.expowaterdemo.BuildConfig;
-import com.expowaterdemo.newarchitecture.components.MainComponentsRegistry;
-import com.expowaterdemo.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
+import com.krinesh.expowaterdemo.BuildConfig;
+import com.krinesh.expowaterdemo.newarchitecture.components.MainComponentsRegistry;
+import com.krinesh.expowaterdemo.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
 import java.util.ArrayList;
 import java.util.List;
 
