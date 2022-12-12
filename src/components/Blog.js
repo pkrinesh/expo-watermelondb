@@ -8,7 +8,7 @@ import styles from './helpers/styles';
 import { extractId } from '../utils';
 import { database } from '../..';
 import { useNavigation } from '@react-navigation/native';
-//
+
 const NastyCommentsItem = ({ blog, onPress }) => (
   <ListItem
     title="Nasty comments"
