@@ -1,15 +1,15 @@
-import React, {Component} from 'react';
-import {FlatList, Text} from 'react-native';
+import React, { Component } from 'react';
+import { FlatList, Text } from 'react-native';
 import withObservables from '@nozbe/with-observables';
-import {Q} from '@nozbe/watermelondb';
+import { Q } from '@nozbe/watermelondb';
 import Button from './helpers/Button';
 import ListItem from './helpers/ListItem';
 import styles from './helpers/styles';
-import {extractId} from '../utils';
-import {database} from '../..';
-import {useNavigation} from '@react-navigation/native';
-
-const NastyCommentsItem = ({blog, onPress}) => (
+import { extractId } from '../utils';
+import { database } from '../..';
+import { useNavigation } from '@react-navigation/native';
+//
+const NastyCommentsItem = ({ blog, onPress }) => (
   <ListItem
     title="Nasty comments"
     countObservable={blog.nastyComments.observeCount()}
@@ -17,7 +17,7 @@ const NastyCommentsItem = ({blog, onPress}) => (
   />
 );
 
-const RawPostItem = ({post, onPress}) => (
+const RawPostItem = ({ post, onPress }) => (
   <ListItem
     title={post.title}
     countObservable={post.comments.observeCount()}
@@ -25,16 +25,16 @@ const RawPostItem = ({post, onPress}) => (
   />
 );
 
-const PostItem = withObservables(['post'], ({post}) => ({
+const PostItem = withObservables(['post'], ({ post }) => ({
   post: post.observe(),
 }))(RawPostItem);
 
-const enhance = withObservables(['blog'], ({blog}) => ({
+const enhance = withObservables(['blog'], ({ blog }) => ({
   blog: blog.observe(),
   posts: blog.posts.observe(),
 }));
 
-const EnhanceBlog = enhance(({blog, posts}) => {
+const EnhanceBlog = enhance(({ blog, posts }) => {
   const navigation = useNavigation();
   const moderate = async () => {
     await blog.moderateAll();
@@ -43,11 +43,11 @@ const EnhanceBlog = enhance(({blog, posts}) => {
   return (
     <FlatList
       data={posts}
-      renderItem={({item: post}) => (
+      renderItem={({ item: post }) => (
         <PostItem
           post={post}
           key={post.id}
-          onPress={() => navigation.navigate('Post', {postId: post.id})}
+          onPress={() => navigation.navigate('Post', { postId: post.id })}
         />
       )}
       ListHeaderComponent={() => (
@@ -56,7 +56,7 @@ const EnhanceBlog = enhance(({blog, posts}) => {
           <NastyCommentsItem
             blog={blog}
             onPress={() =>
-              navigation.navigate('ModerationQueue', {blogId: blog.id})
+              navigation.navigate('ModerationQueue', { blogId: blog.id })
             }
           />
           <Text style={styles.postsListHeader}>Posts: {posts.length}</Text>
@@ -67,11 +67,11 @@ const EnhanceBlog = enhance(({blog, posts}) => {
   );
 });
 
-const enhanceBlog = withObservables(['route'], ({route}) => ({
+const enhanceBlog = withObservables(['route'], ({ route }) => ({
   blog: database.get('blogs').query(Q.where('id', route.params.blogId)),
 }));
 
-const Blog = enhanceBlog(({blog}) => {
+const Blog = enhanceBlog(({ blog }) => {
   console.log('blog screen');
   return <EnhanceBlog blog={blog[0]} />;
 });
